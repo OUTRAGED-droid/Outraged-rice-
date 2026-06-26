@@ -13,6 +13,8 @@
 
 ---
 
+## The Eww control center's wifi and blutooth is not working properly 
+
 ## 🛠️ Instructions 
 
 ### Dependencies 
@@ -48,4 +50,8 @@ curl --proto '=https' --tlsv1.2 -sSf [https://rustup.rs](https://rustup.rs) | sh
 source "$HOME/.cargo/env" && \
 git clone [https://github.com/elkowar/eww](https://github.com/elkowar/eww) && \
 cd eww && \
-cargo build --release --no-default-features --features wayland
+
+
+## ⚖️ Disclaimer
+
+This repository contains my personal configuration files. Use them at your own risk. I am not responsible for any damage to your hardware, loss of data, or broken system configurations that may result from installing or modifying these files. Always backup your files before applying new configurations.cargo build --release --no-default-features --features wayland
