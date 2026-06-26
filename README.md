@@ -54,4 +54,4 @@ cd eww && \
 
 ## ⚖️ Disclaimer
 
-This repository contains my personal configuration files. Use them at your own risk. I am not responsible for any damage to your hardware, loss of data, or broken system configurations that may result from installing or modifying these files. Always backup your files before applying new configurations.cargo build --release --no-default-features --features wayland
+This repository contains my personal configuration files. Use them at your own risk. I am not responsible for any damage to your hardware, loss of data, or broken system configurations that may result from installing or modifying these files. 
