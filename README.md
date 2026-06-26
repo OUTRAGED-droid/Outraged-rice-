@@ -1,6 +1,6 @@
 # Outraged-rice-
 
-## 🖥️ Plain Desktop 
+## 🖥️  Desktop preview  
 
 <p align="center">
   <img src="2026-06-27-000555_hyprshot.png" alt="Preview 1" width="48%"/>
