@@ -1,0 +1,8 @@
+configuration {
+    modi: "drun";
+    show-icons: true;
+    display-drun: "Apps";
+    font: "MesloLGS Nerd Font 12";
+}
+
+@theme "catppuccin"
