@@ -1,14 +1,12 @@
-# Outraged-rice-
+<img width="1280" height="800" alt="2026-06-27-000614_hyprshot" src="https://github.com/user-attachments/assets/48f59569-ac1a-4a03-9503-6bc67f995284" /># Outraged-rice-
 #Plain Desktop 
 ![Preview 1](2026-06-27-000555_hyprshot.png)
-#Control center
+
 ![Preview 2](2026-06-27-000605_hyprshot.png)
-#rofi
+
 ![Preview 3](2026-06-27-000614_hyprshot.png)
-#tiling/Terminal
+
 ![Preview 4](2026-06-27-000700_hyprshot.png)
-
-
 
 #Instructions 
 
