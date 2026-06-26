@@ -32,3 +32,11 @@ Choose the command block that matches your Linux distribution:
 ### Arch Linux
 ```bash
 sudo pacman -S brightnessctl rofi pulseaudio waybar && yay -S eww-git
+
+
+###Fedora
+```bash 
+sudo dnf install brightnessctl rofi pulseaudio waybar rust cargo gcc-c++ gtk3-devel gtk-layer-shell-devel pango-devel -y && \
+git clone [https://github.com/elkowar/eww](https://github.com/elkowar/eww) && \
+cd eww && \
+cargo build --release --no-default-features --features wayland
