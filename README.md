@@ -23,13 +23,14 @@ Eww
 #Dependences install commands
 
 
-#Arch 
+#Arch :
+
 sudo pacman -S brightnessctl rofi pulseaudio waybar  && yay -S eww-git
 
-#Fedora
+#Fedora:
 sudo dnf install brightnessctl rofi pulseaudio waybar rust cargo gcc-c++ gtk3-devel gtk-layer-shell-devel pango-devel -y && git clone https://github.com && cd eww && cargo build --release --no-default-features --features wayland
 
-#Ubuntu 
+#Ubuntu :
 sudo apt update && sudo apt install brightnessctl rofi pulseaudio waybar build-essential libgtk-3-dev -y && curl --proto '=https' --tlsv1.2 -sSf https://rustup.rs | sh -s -- -y && source "$HOME/.cargo/env" && git clone https://github.com && cd eww && cargo build --release --no-default-features --features wayland
 
 
