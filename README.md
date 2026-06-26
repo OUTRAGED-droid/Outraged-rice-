@@ -1,41 +1,34 @@
 # Outraged-rice-
-#Plain Desktop 
-![Preview 1](2026-06-27-000555_hyprshot.png)
 
-![Preview 2](2026-06-27-000605_hyprshot.png)
+## 🖥️ Plain Desktop 
 
-![Preview 3](2026-06-27-000614_hyprshot.png)
+<p align="center">
+  <img src="2026-06-27-000555_hyprshot.png" alt="Preview 1" width="48%"/>
+  <img src="2026-06-27-000605_hyprshot.png" alt="Preview 2" width="48%"/>
+</p>
+<p align="center">
+  <img src="2026-06-27-000614_hyprshot.png" alt="Preview 3" width="48%"/>
+  <img src="2026-06-27-000700_hyprshot.png" alt="Preview 4" width="48%"/>
+</p>
 
-![Preview 4](2026-06-27-000700_hyprshot.png)
+---
 
-#Instructions 
+## 🛠️ Instructions 
 
-#Dependences 
-Brightnessctl 
-Pulseaudio 
-Waybar 
-Rofi 
-Eww 
+### Dependencies 
+Make sure you have the following packages installed before applying the configuration:
+* `brightnessctl`
+* `pulseaudio`
+* `waybar`
+* `rofi`
+* `eww`
 
+---
 
-#Dependences install commands
+## 🚀 Dependency Installation Commands
 
+Choose the command block that matches your Linux distribution:
 
-#Arch :
-
-sudo pacman -S brightnessctl rofi pulseaudio waybar  && yay -S eww-git
-
-#Fedora:
-sudo dnf install brightnessctl rofi pulseaudio waybar rust cargo gcc-c++ gtk3-devel gtk-layer-shell-devel pango-devel -y && git clone https://github.com && cd eww && cargo build --release --no-default-features --features wayland
-
-#Ubuntu :
-sudo apt update && sudo apt install brightnessctl rofi pulseaudio waybar build-essential libgtk-3-dev -y && curl --proto '=https' --tlsv1.2 -sSf https://rustup.rs | sh -s -- -y && source "$HOME/.cargo/env" && git clone https://github.com && cd eww && cargo build --release --no-default-features --features wayland
-
-
-#the Eww wifi and rofi codes used in the control center is not working properly.
-
-
-
-
-
-the 
+### Arch Linux
+```bash
+sudo pacman -S brightnessctl rofi pulseaudio waybar && yay -S eww-git
