@@ -1,0 +1,105 @@
+(defwindow settings-window
+  :monitor 0
+  :geometry (geometry :x "15px"          ; Adjusted left/right alignment
+                      :y "38px"          ; Pushed higher up to sit closer under Waybar
+                      :width "360px"
+                      :anchor "top center") ; Keeps layout centered under bar
+  :stacking "overlay"
+  :exclusive false
+  (settings-content))
+
+(defwindow wifi-window
+  :monitor 0
+  :geometry (geometry :x "15px"
+                      :y "38px"          ; Pushed higher up to sit closer under Waybar
+                      :width "360px"
+                      :anchor "top center")
+  :stacking "overlay"
+  :exclusive false
+  (wifi-content))
+
+(defwidget wifi-content []
+  (box :class "settings-root slide-in" :orientation "v" :space-evenly false :spacing 8
+    (box :class "section" :orientation "h" :space-evenly false
+    (label :text "󰤨  Wi-Fi Networks" :class "tile-title" :hexpand true :halign "start")
+      (button :class "icon-toggle" :onclick "bash -c 'eww close wifi-window && eww open settings-window'" "󰁍"))
+    (box :class "section" :orientation "v" :space-evenly false :spacing 6
+      (box :orientation "h" :space-evenly false :spacing 8
+        (label :text "Connected:" :class "tile-sub")
+        (label :text "${wifi_current}" :class "tile-title" :halign "start" :hexpand true))
+      (button :class "toggle-tile"
+              :onclick "bash -c '~/.config/eww/scripts/wifi.sh disconnect; eww update wifi_current=$(~/.config/eww/scripts/wifi.sh current) wifi_ssid=$(~/.config/eww/scripts/wifi.sh current)'"
+        (label :text "󰤭  Disconnect" :class "tile-sub" :halign "center")))
+    (box :class "section" :orientation "v" :space-evenly false :spacing 4
+      (box :orientation "h" :space-evenly false
+        (label :text "Available Networks" :class "tile-title" :hexpand true :halign "start")
+        (button :class "media-btn"
+                :onclick "bash -c 'eww update networks=Scanning...; eww update networks=$(~/.config/eww/scripts/wifi.sh scan)'"
+            "󰑓  Refresh"))
+      (box :orientation "v" :space-evenly false :spacing 4
+        (for network in {networks}
+          (button :class "wifi-network-btn"
+                  :onclick "bash -c '~/.config/eww/scripts/wifi.sh connect \"${network}\"; eww update wifi_current=$(~/.config/eww/scripts/wifi.sh current) wifi_ssid=$(~/.config/eww/scripts/wifi.sh current); eww close wifi-window; eww open settings-window'"
+            (label :text "󰤨  ${network}" :class "tile-title" :halign "start")))))))
+
+(defwidget settings-content []
+  (box :class "settings-root slide-in" :orientation "v" :space-evenly false :spacing 8
+    (box :class "section" :orientation "h" :space-evenly false :spacing 8
+      (button :class "toggle-tile active" :onclick "bash -c 'eww update wifi_current=$(~/.config/eww/scripts/wifi.sh current); eww update networks=$(~/.config/eww/scripts/wifi.sh scan) & eww open wifi-window; eww close settings-window'"
+        (box :orientation "h" :space-evenly false :spacing 10 :hexpand true
+          (label :text "󰤨" :class "tile-icon")
+          (box :orientation "v" :space-evenly false
+            (label :text "Wi-Fi" :class "tile-title" :halign "start")
+            (label :text "${wifi_ssid}" :class "tile-sub" :halign "start"))))
+      (button :class "toggle-tile" :onclick "bash ~/.config/eww/scripts/bluetooth.sh &"
+        (box :orientation "h" :space-evenly false :spacing 10 :hexpand true
+          (label :text "󰂯" :class "tile-icon")
+          (box :orientation "v" :space-evenly false
+            (label :text "Bluetooth" :class "tile-title" :halign "start")
+            (label :text "${bt_status}" :class "tile-sub" :halign "start")))))
+    (box :class "section" :orientation "h" :space-evenly true :spacing 8
+      (button :class "icon-toggle" :onclick "bash -c '/usr/bin/eww close settings-window'" "󰅖")
+      (button :class "icon-toggle" :onclick "bash -c 'eww update wifi_current=$(~/.config/eww/scripts/wifi.sh current); eww update networks=$(~/.config/eww/scripts/wifi.sh scan) & eww open wifi-window; eww close settings-window'" "󰍹")
+      (button :class "icon-toggle" :onclick "bash ~/.config/eww/scripts/bluetooth.sh &" "󰂯")
+      (button :class "icon-toggle ${notif_status == 'on' ? 'active' : ''}"
+              :onclick "bash -c '~/.config/eww/scripts/notifications.sh toggle && eww update notif_status=$(~/.config/eww/scripts/notifications.sh status)'"
+              "󰂚"))
+    (box :class "section sliders" :orientation "v" :space-evenly false :spacing 12
+      (box :orientation "h" :space-evenly false :spacing 10
+        (label :text "󰕾" :class "slider-icon")
+        (label :text "${volume}%" :class "slider-val" :width 35)
+        (scale :value volume :min 0 :max 100 :hexpand true
+               :onchange "amixer -D pulse sset Master {}%"))
+      (box :orientation "h" :space-evenly false :spacing 10
+        (label :text "󰃞" :class "slider-icon")
+        (label :text "${brightness}%" :class "slider-val" :width 35)
+        (scale :value brightness :min 0 :max 100 :hexpand true
+               :onchange "brightnessctl set {}%")))
+    (box :class "section media" :orientation "h" :space-evenly false :spacing 12
+      (box :class "media-art" :style "background-image: url('${player_art}');")
+      (box :orientation "v" :space-evenly false :spacing 4 :hexpand true
+        (label :text "${player_title}" :class "media-title" :halign "start" :limit-width 22)
+        (label :text "${player_artist}" :class "media-artist" :halign "start" :limit-width 22)
+        (box :orientation "h" :space-evenly true :spacing 4
+          (button :class "media-btn" :onclick "playerctl previous" "󰒮")
+          (button :class "media-btn" :onclick "playerctl play-pause" "${player_status == 'Playing' ? '󰏤' : '󰐊'}")
+          (button :class "media-btn" :onclick "playerctl next" "󰒭"))))
+    (box :class "footer" :orientation "h" :space-evenly false
+      (button :class "footer-btn" :onclick "systemctl poweroff" "󰐥")
+      (box :hexpand true)
+      (label :text "${username}" :class "footer-user")
+      (box :hexpand true)
+      (button :class "footer-btn" :onclick "systemctl reboot" "󰜉"))))
+
+(defpoll wifi_ssid    :interval "10s" "nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d: -f2 | head -1 || echo 'Disconnected'")
+(defpoll bt_status    :interval "5s"  "bluetoothctl show | grep -q 'Powered: yes' && echo 'On' || echo 'Off'")
+(defpoll volume       :interval "3s"  "~/.config/eww/scripts/getvol")
+(defpoll brightness   :interval "2s"  "brightnessctl -m | cut -d, -f4 | sed 's/%//'")
+(defpoll notif_status :interval "2s"  "~/.config/eww/scripts/notifications.sh status")
+(defpoll player_title  :interval "2s" "playerctl metadata title 2>/dev/null || echo 'Nothing playing'")
+(defpoll player_artist :interval "2s" "playerctl metadata artist 2>/dev/null || echo ''")
+(defpoll player_art    :interval "2s" "playerctl metadata mpris:artUrl 2>/dev/null | sed 's|file://||' || echo ''")
+(defpoll player_status :interval "1s" "playerctl status 2>/dev/null || echo 'Stopped'")
+(defpoll username      :interval "60s" "whoami")
+(defvar networks "")
+(defvar wifi_current "Disconnected")

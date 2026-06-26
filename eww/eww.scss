@@ -1,0 +1,154 @@
+/* Resetting default GTK white layouts completely */
+* {
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    all: unset;
+}
+
+/* Fixes the window container background rendering */
+window { 
+    background-color: transparent; 
+}
+
+@keyframes drop-down {
+    from {
+        margin-top: -30px;
+        opacity: 0;
+    }
+    to {
+        margin-top: 0px;
+        opacity: 1;
+    }
+}
+
+.slide-in {
+    animation: drop-down 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.settings-root {
+    background-color: #181825; /* Original Dark Catppuccin Base */
+    border-radius: 16px;
+    border: 1px solid #313244;
+    padding: 16px;
+    color: #cdd6f4;
+}
+
+.section {
+    background-color: #1e1e2e; /* Original Dark Catppuccin Mantle */
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.toggle-tile {
+    background-color: #313244;
+    border-radius: 10px;
+    padding: 10px;
+    color: #cdd6f4;
+}
+
+.toggle-tile.active { 
+    background-color: #cba6f7; 
+}
+
+.tile-icon { font-size: 20px; color: #cdd6f4; }
+.tile-title { font-size: 13px; font-weight: bold; color: #cdd6f4; }
+.tile-sub { font-size: 11px; color: #a6adc8; }
+
+.toggle-tile.active .tile-icon,
+.toggle-tile.active .tile-title,
+.toggle-tile.active .tile-sub { 
+    color: #1e1e2e; 
+}
+
+button {
+    background-color: #313244;
+    border-radius: 10px;
+    border: none;
+    color: #cdd6f4;
+    font-size: 18px;
+    padding: 10px;
+    min-width: 48px;
+    min-height: 48px;
+}
+
+button:hover { 
+    background-color: #45475a; 
+}
+
+.icon-toggle.active { 
+    background-color: #cba6f7; 
+    color: #1e1e2e; 
+}
+
+.slider-icon { font-size: 16px; min-width: 20px; color: #cdd6f4; }
+.slider-val { font-size: 12px; color: #a6adc8; }
+
+scale trough {
+    min-height: 6px;
+    background-color: #313244;
+    border-radius: 3px;
+}
+
+scale highlight {
+    background-color: #f38ba8;
+    border-radius: 3px;
+}
+
+scale slider {
+    min-height: 16px;
+    min-width: 16px;
+    background-color: #f38ba8;
+    border-radius: 50%;
+    margin: -5px 0;
+    border: none;
+}
+
+.media-art {
+    min-width: 72px;
+    min-height: 72px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    background-color: #313244;
+}
+
+.media-title { font-size: 13px; font-weight: bold; color: #cdd6f4; }
+.media-artist { font-size: 11px; color: #a6adc8; }
+
+.media-btn {
+    background-color: #313244;
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 6px 10px;
+    color: #cdd6f4;
+    min-width: unset;
+    min-height: unset;
+}
+
+.footer { padding-top: 4px; }
+
+.footer-btn {
+    background-color: #313244;
+    border-radius: 8px;
+    font-size: 18px;
+    padding: 6px 12px;
+    color: #cdd6f4;
+    min-width: unset;
+    min-height: unset;
+}
+
+.footer-user { font-size: 12px; color: #a6adc8; }
+
+.wifi-network-btn {
+    background-color: #313244;
+    border-radius: 10px;
+    padding: 10px 14px;
+    color: #cdd6f4;
+    font-size: 13px;
+    min-width: unset;
+    min-height: unset;
+    border: none;
+}
+
+.wifi-network-btn:hover { 
+    background-color: #45475a; 
+}
