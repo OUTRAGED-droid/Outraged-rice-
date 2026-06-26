@@ -1,0 +1,90 @@
+/* Global Reset */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Roboto", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    min-height: 0;
+}
+
+/* Make the wrapper itself invisible so gaps show between groups */
+window#waybar {
+    background: transparent;
+}
+
+/* Each group is its own dark pill — sharp top, rounded bottom only,
+   since the bar sits flush against the screen edge */
+.modules-left,
+.modules-center,
+.modules-right {
+    background: #0a0a0a;
+    border-radius: 0 0 14px 14px;
+    padding: 0 6px;
+
+    /* Thin lavender border (sides and bottom only to match the flush top) */
+    border-bottom: 1px solid #b4befe;
+    border-left: 1px solid #b4befe;
+    border-right: 1px solid #b4befe;
+}
+
+/* Individual module spacing */
+#custom-launcher,
+#workspaces,
+#clock,
+#network,
+#pulseaudio,
+#temperature,
+#battery {
+    background: transparent;
+    color: #e8e8e8;
+    padding: 0 10px;
+}
+
+/* Arch logo — Arch blue, sits at the far left */
+#custom-launcher {
+    color: #1793d1;
+    font-size: 15px;
+    padding-left: 14px;
+}
+
+/* Workspace dots: muted when inactive, white when focused */
+#workspaces button {
+    padding: 0 5px;
+    color: #4d4d4d;
+    background: transparent;
+    font-size: 12px;
+}
+
+#workspaces button.focused {
+    color: #ffffff;
+}
+
+#workspaces button:hover {
+    color: #cfcfcf;
+    background: transparent;
+}
+
+/* Center clock — light purple, monospaced like a timer readout, clickable */
+#clock {
+    color: #cba6f7;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    letter-spacing: 0.5px;
+}
+
+#clock:hover {
+    color: #b4befe;
+}
+
+/* Right-side status icons — soft gray, uniform, no rainbow colors */
+#network,
+#pulseaudio,
+#temperature,
+#battery {
+    color: #c4c4c4;
+}
+
+/* Battery icon — now the last item, slight right padding to match outer margin */
+#battery {
+    padding-right: 14px;
+}
