@@ -1,0 +1,56 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 26,
+    "spacing": 4,
+    "margin-top": 0,
+    "margin-left": 10,
+    "margin-right": 10,
+
+    "modules-left": ["custom/launcher", "sway/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["network", "pulseaudio", "temperature", "battery"],
+
+    "custom/launcher": {
+        "format": "󰣇",
+        "on-click": "rofi -show drun",
+        "tooltip": false
+    },
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+            "focused": "●",
+            "default": "○"
+        }
+    },
+
+    "clock": {
+        "format": "󱑂 {:%H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "on-click": "eww open --toggle settings-window"
+    },
+
+    "network": {
+        "format-wifi": "<span size='15000'>󰤨</span>",
+        "format-ethernet": "󰈀 Wired",
+        "format-disconnected": "󰖪 Offline",
+        "interval": 5
+    },
+
+    "pulseaudio": {
+        "format": "󰕾 {volume}%",
+        "format-muted": "󰝟 Muted"
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format": " {temperatureC}°C"
+    },
+
+    "battery": {
+        "format": " {capacity}%"
+    }
+}
